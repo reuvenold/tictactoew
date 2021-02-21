@@ -13,7 +13,7 @@ starting over in every line
 - - X
 - - -
 ```
-like this:
+using this key:
 ```
 1 2 3
 4 5 6
