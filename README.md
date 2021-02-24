@@ -1,21 +1,21 @@
-note:
-you have to put the loacation in one number,
-for example:
-```
+### note:
 
-enter location: 6
-
-```
-will put in the 6th position starting from the top-left corner
-starting over in every line
-```
-- - -
-- - X
-- - -
-```
+when it shows the `enter location:` you need  
+to enter the location of where you want to place
 using this key:
 ```
 1 2 3
 4 5 6
 7 8 9
+
+```
+so for example entering 6 will produce  
+in this location:
+```
+enter location: 6
+
+- - -
+- - X
+- - -
+
 ```
