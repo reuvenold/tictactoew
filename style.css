@@ -1,7 +1,7 @@
 div {
 	text-align: center;
 	margin-top: 100px;
-	background: #358cd1;
+	background: #CD5C5C;
 	border-radius: 20px;
 	height: 150px;
 }
@@ -20,7 +20,7 @@ button:hover {
 	font-family: monospace, sans-serif;
 }
 body {
-	background: #CD5C5C;
+	background: #358cd1;
 }
 p {
 	text-align: center;
