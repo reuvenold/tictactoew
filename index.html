@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<title>Tic Tac Toe</title>
 	<link rel="icon" href="tictactoeicon.ico">
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<style>
 		div {
 	text-align: center;
@@ -50,7 +51,14 @@ p {
 <p lang="he" id="heb">לחצו על אחד מהכפתורים כדי להוריד איקס עיגול</p>
 <p>click one of the buttons to download tic tac toe</p>
 <br><br><br><br>
-<p>Version 2.0 is now available! download now!</p>
-<p lang="he" id="heb">!גרסה 2.0 יצאה! תורידו עכשיו</p>
+<p class="v">Version 2.0 is now available! download now!</p>
+<p lang="he" class="v" id="heb">!גרסה 2.0 יצאה! תורידו עכשיו</p>
+<script>
+var dl = Date().split(' ');
+var dtr = dl[2] + "/" + dl[1] + "/" + dl[3];
+if (dtr == "12/Mar/2021") {
+	$(".v").html("");
+}
+</script>
 </body>
 </html>
