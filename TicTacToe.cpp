@@ -4,31 +4,43 @@
 #include <stdlib.h>
 using namespace std;
 
+string winner;
+
 bool isGameOver(string b[9]) { // checks if the game is over
-	if (b[0] == b[1] && b[1] == b[2] && b[2] != "-") { // first row
+	string wl[2] = {"X", "O"};
+	for (int i = 0; i < 2; i++) {
+	if (b[0] == b[1] && b[1] == b[2] && b[2] == wl[i]) { // first row
+		winner = wl[i];
 		return true;
 	}
-	if (b[3] == b[4] && b[4] == b[5] && b[5] != "-") { // second row
+	if (b[3] == b[4] && b[4] == b[5] && b[5] == wl[i]) { // second row
+	winner = wl[i];
 		return true;
 	}
-	if (b[6] == b[7] && b[7] == b[8] && b[8] != "-") { // third row
+	if (b[6] == b[7] && b[7] == b[8] && b[8] == wl[i]) { // third row
+	winner = wl[i];
 		return true;
 	}
-	if (b[0] == b[3] && b[3] == b[6] && b[6] != "-") { // first column
+	if (b[0] == b[3] && b[3] == b[6] && b[6] == wl[i]) { // first column
+	winner = wl[i];
 		return true;
 	}
-	if (b[1] == b[4] && b[4] == b[7] && b[7] != "-") { // second column
+	if (b[1] == b[4] && b[4] == b[7] && b[7] == wl[i]) { // second column
+	winner = wl[i];
 		return true;
 	}
-	if (b[2] == b[5] && b[5] == b[8] && b[8] != "-") { // third column
+	if (b[2] == b[5] && b[5] == b[8] && b[8] == wl[i]) { // third column
+	winner = wl[i];
 		return true;
 	}
-	if (b[0] == b[4] && b[4] == b[8] && b[8] != "-") { // top-left to bottom-right
+	if (b[0] == b[4] && b[4] == b[8] && b[8] == wl[i]) { // top-left to bottom-right
+	winner = wl[i];
 		return true;
 	}
-	if (b[2] == b[4] && b[4] == b[6] && b[6] != "-") { // top-right to bottom-left
+	if (b[2] == b[4] && b[4] == b[6] && b[6] == wl[i]) { // top-right to bottom-left
+		winner = wl[i];
 		return true;
-	}
+	}}
 	return false;
 }
 
@@ -50,6 +62,10 @@ void getLoc() {
 	cout << "\n";
 	cout << "enter position: ";
 	cin >> pos_pre;
+	if (pos_pre == "n") {
+		loc = -2;
+		return;
+	}
 	try {
 		pos = stoi(pos_pre);
 	}
@@ -64,12 +80,15 @@ void getLoc() {
 	loc = pos - 1;
 }
 
+bool start_over = false;
+
 void start() { // starts the game
 	string board[9] = { "-", "-", "-", "-", "-", "-", "-", "-", "-" };
 	displayBoard(board);
 	while (true) {
+		start_over = false;
 		if (isGameOver(board)) {
-			cout << "\nGame Over!\n";
+			cout << "\nGame Over!" << " Player " << winner << " Won!\n";
 			break;
 		}
 		int xc = 0;
@@ -98,6 +117,10 @@ void start() { // starts the game
 			turn = "X";
 		}
 		getLoc();
+		if (loc == -2) {
+			start_over = true;
+			return;
+		}
 		while (loc == -1) {
 			system("cls");
 			cout << "tic-tac-toe game\n" << "------------------\n";
@@ -132,7 +155,9 @@ int main() {
 	cout << "tic-tac-toe game\n" << "------------------\n";
 	while (true) {
 		start();
-		system("pause");
+		if (!start_over) {
+			system("pause");
+		}
 		system("cls");
 		cout << "tic-tac-toe game\n" << "------------------\n";
 	}
